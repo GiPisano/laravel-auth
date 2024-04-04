@@ -43,11 +43,10 @@ class ProjectController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\project  $project
-     * @return \Illuminate\Http\Response
      */
     public function show(project $project)
     {
-        //
+       return view('admin.projects.show', compact('project'));
     }
 
     /**

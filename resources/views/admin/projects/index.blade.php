@@ -9,13 +9,13 @@
             <table class="table">
                 <thead>
                     <th>ID</th>
-                    <th>title</th>
-                    {{-- <th>description</th> --}}
-                    <th>author</th>
+                    <th>Title</th>
+                    {{-- <th>Description</th> --}}
+                    <th>Author</th>
                     <th></th>
                 </thead>
                 <tbody>
-                    @foreach ($projects as $project)
+                    @forelse ($projects as $project)
                         <tr>
                             <td>{{ $project->id }}</td>
                             <td>{{ $project->title }}</td>
@@ -23,26 +23,26 @@
                             <td>{{ $project->author }}</td>
                             <td>
                                 <div class="link-index-list">
-                                    <div>
-                                        <a href="">
-                                            <i class="fa-solid fa-eye fa-lg" style="color: #0c4d13;"></i>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <a href="">
-                                            <i class="fa-solid fa-pen fa-lg" style="color: #203fa4;"></i>
-                                        </a>
-                                    </div>
-                                    <div>
-                                        <button class="btn btn-primary btn-trash" data-bs-toggle="modal"
-                                            data-bs-target="#delete-project-{{ $project->id }}-modal" type="button">
-                                            <i class="fa-solid fa-trash-can fa-lg" style="color: #e00b04;"></i>
-                                        </button>
-                                    </div>
+                                    <a href="{{ route('admin.projects.show', $project) }}">
+                                        <i class="fa-solid fa-eye fa-lg" style="color: #0c4d13;"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa-solid fa-pen fa-lg" style="color: #203fa4;"></i>
+                                    </a>
+                                    <button class="btn btn-primary btn-trash" data-bs-toggle="modal"
+                                        data-bs-target="#delete-project-{{ $project->id }}-modal" type="button">
+                                        <i class="fa-solid fa-trash-can fa-lg" style="color: #e00b04;"></i>
+                                    </button>
                                 </div>
                             </td>
                         </tr>
-                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="100%">
+                                <i>No projects found</i>
+                            </td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
             <div class="paginator">

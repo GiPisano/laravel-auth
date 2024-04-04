@@ -12,7 +12,7 @@
                     <th>Title</th>
                     {{-- <th>Description</th> --}}
                     <th>Author</th>
-                    <th></th>
+                    <th><a href="{{ route('admin.projects.create') }}" class="btn btn-primary">New Project</a></th>
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
@@ -59,22 +59,21 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Elimina project
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Delete project
                             {{ $project->title }}</h1>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Sei sicuro di voler eliminare questo Progetto? Questa azione non può
-                        essere annullata.
+                        Are you sure you want to delete this Project? This action cannot be undone.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                        <form {{-- action="{{ route('projects.destroy', $project) }}" --}} method="POST">
+                        <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-danger">
-                                Elimina
+                                Delete
                             </button>
                         </form>
                     </div>

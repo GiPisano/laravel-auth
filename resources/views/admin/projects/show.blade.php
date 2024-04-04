@@ -7,7 +7,6 @@
     <div class="container">
 
         <div class="text-center mt-4">
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">New Project</a>
             <a href="{{ route('admin.projects.index') }}" class="btn btn-primary">Return to the list</a>
             <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit project</a>
         </div>

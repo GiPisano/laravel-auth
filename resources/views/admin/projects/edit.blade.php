@@ -8,8 +8,8 @@
         <div class="container">
             <h1>Edit project</h1>
             <div class="text-center">
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary mb-3">torna alla lista</a>
-                <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary mb-3">torna ai dettagli</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-primary mb-3">Return to the list</a>
+                <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary mb-3">Return to details</a>
             </div>
 
             <form action="{{ route('admin.projects.update', $project) }}" method="POST">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-success mt-3">Inserisci</button>
+                <button class="btn btn-success mt-3">Insert</button>
             </form>
         </div>
     </section>

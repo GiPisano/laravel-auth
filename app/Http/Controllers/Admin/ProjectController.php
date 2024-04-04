@@ -14,29 +14,35 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::paginate(10);
+        $projects = Project::orderBy('id', 'DESC')->paginate(10);
         return view('admin.projects.index', compact('projects'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+       return view('admin.projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $data= $request->all();
+        $project = new project;
+
+        $project->fill($data);
+
+        $project->save();
+
+        return redirect()->route('admin.projects.show', $project);
+
     }
 
     /**
@@ -77,10 +83,10 @@ class ProjectController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\project  $project
-     * @return \Illuminate\Http\Response
      */
     public function destroy(project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index', $project);
     }
 }

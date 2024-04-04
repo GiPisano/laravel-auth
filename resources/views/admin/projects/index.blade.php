@@ -26,7 +26,7 @@
                                     <a href="{{ route('admin.projects.show', $project) }}">
                                         <i class="fa-solid fa-eye fa-lg" style="color: #0c4d13;"></i>
                                     </a>
-                                    <a href="">
+                                    <a href="{{ route('admin.projects.edit', $project) }}">
                                         <i class="fa-solid fa-pen fa-lg" style="color: #203fa4;"></i>
                                     </a>
                                     <button class="btn btn-primary btn-trash" data-bs-toggle="modal"

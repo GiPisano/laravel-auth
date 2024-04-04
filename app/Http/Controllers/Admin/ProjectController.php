@@ -53,11 +53,10 @@ class ProjectController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\project  $project
-     * @return \Illuminate\Http\Response
      */
     public function edit(project $project)
     {
-        //
+        return view('admin.projects.edit' , compact('project'));
     }
 
     /**
@@ -65,11 +64,13 @@ class ProjectController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\project  $project
-     * @return \Illuminate\Http\Response
      */
     public function update(Request $request, project $project)
     {
-        //
+        $data= $request->all();
+        $project->update($data);
+
+        return redirect()->route('admin.projects.show', $project);
     }
 
     /**

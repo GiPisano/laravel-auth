@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
+use App\Http\Requests\UpdateProjectRequest;
 use App\Models\project;
 use Illuminate\Http\Request;
 
@@ -33,8 +35,10 @@ class ProjectController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      */
-    public function store(Request $request)
+    public function store(StoreProjectRequest $request)
     {
+        $request->validated();
+
         $data= $request->all();
         $project = new project;
 
@@ -72,8 +76,9 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\project  $project
      */
-    public function update(Request $request, project $project)
+    public function update(UpdateProjectRequest $request, project $project)
     {
+        $request->validated();
         $data= $request->all();
         $project->update($data);
 

@@ -21,17 +21,26 @@
                 <div class="row g-2">
                     <div class="col-4">
                         <label class="form-lable" for="title">TITLE</label>
-                        <input class="form-control" value="{{ $project->title }}" type="text" name="title"
-                            id="title" />
+                        <input @class(['form-control', 'is-invalid' => $errors->has('title')]) value="{{ old('title') ?? $project->title }}" type="text"
+                            name="title" id="title" />
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-4">
                         <label class="form-lable" for="author">Author</label>
-                        <input class="form-control" value="{{ $project->author }}" type="text" name="author"
-                            id="author" />
+                        <input @class(['form-control', 'is-invalid' => $errors->has('author')]) value="{{ old('author') ?? $project->author }}" type="text"
+                            name="author" id="author" />
+                        @error('author')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="col-12">
                         <label class="form-lable" for="description">DESCRITION</label>
-                        <textarea class="form-control" name="description" rows="5" id="description">{{ $project->description }}</textarea>
+                        <textarea @class(['form-control', 'is-invalid' => $errors->has('description')]) name="description" rows="5" id="description">{{ old('description') ?? $project->description }}</textarea>
+                        @error('description')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
 

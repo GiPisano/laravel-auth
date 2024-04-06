@@ -1,20 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'projects')
+@section('title', (empty($project->id) ? 'Add New' : 'Edit') . ' Project')
 
 @section('content')
 
     <section>
         <div class="container">
-            <h1>Edit project</h1>
+            <h1>{{ (empty($project->id) ? 'Add New' : 'Edit') . ' Project' }}</h1>
             <div class="text-center">
                 <a href="{{ route('admin.projects.index') }}" class="btn btn-primary mb-3">Return to the list</a>
-                <a href="{{ route('admin.projects.show', $project) }}" class="btn btn-primary mb-3">Return to details</a>
             </div>
 
-            <form action="{{ route('admin.projects.update', $project) }}" method="POST">
+            <form
+                action="{{ empty($project->id) ? route('admin.projects.store') : route('admin.projects.update', $project) }}"
+                method="POST">
                 @csrf
-                @method('PATCH')
+                @if (!empty($project->id))
+                    @method('PATCH')
+                @endif
                 <div class="row g-2">
                     <div class="col-4">
                         <label class="form-lable" for="title">TITLE</label>
@@ -32,7 +35,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-success mt-3">Insert</button>
+                <button class="btn btn-success mt-3">{{ (empty($project->id) ? 'Save' : 'Edit') . ' Project' }}</button>
             </form>
         </div>
     </section>

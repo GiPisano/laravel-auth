@@ -12,7 +12,11 @@
                     <th>Title</th>
                     {{-- <th>Description</th> --}}
                     <th>Author</th>
-                    <th><a href="{{ route('admin.projects.create') }}" class="btn btn-primary">New Project</a></th>
+                    <th class="d-flex justify-content-center">
+                        <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">
+                            <i class="fa-solid fa-plus"></i>
+                            New Project</a>
+                    </th>
                 </thead>
                 <tbody>
                     @forelse ($projects as $project)
